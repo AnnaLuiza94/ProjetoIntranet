@@ -1,0 +1,58 @@
+﻿@model System.Collections.Generic.IEnumerable<ProjetoIntranet.Models.News>
+
+@{
+    ViewBag.Title = "Notícias - Index";
+}
+
+<h2>Notícias</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar notícia", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Criador")
+        </th>
+        <th>
+            @Html.DisplayName("Título")
+        </th>
+        <th>
+            @Html.DisplayName("Conteúdo")
+        </th>
+        <th>
+            @Html.DisplayName("Departamentos associados")
+        </th>
+        <th>@Html.DisplayName("Ações")</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                <ul>
+                    @foreach (var departament in item.Departaments)
+                    {
+
+                        <li>@departament.Name</li>
+                    }
+                </ul>
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Remover", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

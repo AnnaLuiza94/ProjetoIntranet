@@ -1,0 +1,55 @@
+﻿@using System.Linq
+@model System.Collections.Generic.IEnumerable<ProjetoIntranet.Models.Departament>
+
+@{
+    ViewBag.Title = "Departamentos - Index";
+}
+
+<h2>Departamentos</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar departamento", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Nome")
+        </th>
+        <th>
+            @Html.DisplayName("Notícias vinculadas")
+        </th>
+        <th>Ações</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+
+                @if (item.News.Any())
+                {
+                    <ul>
+                        @foreach (var noticia in item.News)
+                        {
+                            <li>@noticia.Title</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="text-danger">Nenhuma notícia vinculada a esse departamento.</p>
+                }
+
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Remover", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

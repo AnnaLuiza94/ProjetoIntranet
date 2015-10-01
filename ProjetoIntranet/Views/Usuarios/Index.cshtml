@@ -1,0 +1,47 @@
+﻿@model System.Collections.Generic.IEnumerable<ProjetoIntranet.Models.Users>
+
+@{
+    ViewBag.Title = "Usuários - Index";
+}
+
+<h2>Usuários</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar usuário", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Nome")
+        </th>
+        <th>
+            @Html.DisplayName("E-mail")
+        </th>
+        <th>
+            @Html.DisplayName("Notícias vinculadas")
+        </th>
+        <th>
+            @Html.DisplayName("Ações")
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @item.News.Count
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Remover", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,35 @@
+﻿@model System.Collections.Generic.IEnumerable<ProjetoIntranet.Models.News>
+@{
+    ViewBag.Title = "Página Inicial";
+}
+
+<div class="jumbotron">
+    <h1>Projeto Intranet</h1>
+    <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+
+<div class="row">
+    <h1>Notícias</h1>
+    <hr/>
+    @foreach (var notice in Model)
+    {
+        <div class="col-md-4">
+        <h3>@notice.Title</h3>
+            <p>
+                @notice.Content
+            </p>
+            <p>
+                Departamentos:
+                <ul>
+                    @foreach (var departament in notice.Departaments)
+                    {
+                        <li>@departament.Name</li>
+                    }
+                </ul>
+
+            </p>
+        </div>
+    }
+</div>

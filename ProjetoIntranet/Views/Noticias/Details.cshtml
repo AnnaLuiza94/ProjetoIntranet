@@ -1,0 +1,41 @@
+﻿@model ProjetoIntranet.Models.News
+
+@{
+    ViewBag.Title = "Detalhes notícia";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Notícia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Criador:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Name)
+        </dd>
+
+        <dt>
+           @Html.DisplayName("Título:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Conteúdo:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Lista de notícias", "Index")
+</p>
